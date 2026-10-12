@@ -1,9 +1,13 @@
 import clsx from "clsx";
 
-const Button = ({ id, title, rightIcon, leftIcon, containerClass }) => {
+const Button = ({ id, title, rightIcon, leftIcon, containerClass, href, target }) => {
+  const Element = href ? "a" : "button";
   return (
-    <button
+    <Element
       id={id}
+      href={href}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       className={clsx(
         "group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-[#dfdff2] px-7 py-3 text-black",
         containerClass
@@ -21,7 +25,7 @@ const Button = ({ id, title, rightIcon, leftIcon, containerClass }) => {
       </span>
 
       {rightIcon}
-    </button>
+    </Element>
   );
 };
 
